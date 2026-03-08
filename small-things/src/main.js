@@ -1,30 +1,31 @@
-const INITIAL_CANVAS_SIZE = new V2(1024, 768);
-let CANVAS_SIZE = INITIAL_CANVAS_SIZE
-let BGM = {}; let SFX = {};
-
-function init() {
+function preload() {
     [BGM, SFX] = preloadAudio();
+    IMG = preloadImg();
 }
 
 function setup() {
-    init();
     createCanvas(CANVAS_SIZE.x, CANVAS_SIZE.y);
     updateWindowSize();
 }
 
 function draw() {
     background(67);
-    SCALE = CANVAS_SIZE.x / INITIAL_CANVAS_SIZE.x
-    scale(SCALE);
-
-    noStroke();
-    fill('#e07d1f');
-    square(0, 0, 1022);
     resizeScreen()
+    SCALE = CANVAS_SIZE.x / INITIAL_CANVAS_SIZE.x;
+    scale(SCALE);
+    
+    CURSOR = 'default'
+    CURSOR_HOVER = null;
+    noStroke();
+    
+    if (SCENE) SCENE.draw();
+    if (DEBUG) debugDraw();
+
+    handleMouse(CANVAS_SIZE, SCALE);
 }
 
 function mouseClicked() {
-    // SFX["vine_boom"].play();
+    MOUSE_DOWN = true;
 }
 
 function updateWindowSize() { // do not call every frame, gets slow
@@ -44,4 +45,8 @@ function resizeScreen() {
     if (originalWidth != CANVAS_SIZE.x) {
         resizeCanvas(CANVAS_SIZE.x, CANVAS_SIZE.y);
     }
+}
+
+function debugDraw() {
+    text(`Mouse POS: ${mouseX/SCALE} / ${mouseY/SCALE}`, 10, 20)
 }

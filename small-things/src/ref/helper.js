@@ -7,3 +7,7 @@ class V2 {
         return `V2(${this.x}, ${this.y})`;
     }
 }
+
+function mid(a, b, c) {
+    return a > b ? (c > a ? a : (b > c ? b : c)) : (c > b ? b : (a > c ? a : c));
+}
