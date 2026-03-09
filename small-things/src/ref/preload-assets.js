@@ -26,10 +26,11 @@ function preloadAudio() {
 const IMG_FILEPATH = "/small-things/assets/img/";
 
 const IMG_FILES = [ // always .png
-    "bg/bg1",
-    "bg/bg1a",
-    "bg/bg2",
-    "bg/bg2a",
+    "bg/castle",
+    "bg/forest",
+    "bg/mine",
+    "bg/river",
+    "bg/town",
     "cursor/default",
     "cursor/enter",
     "cursor/exit",
@@ -38,6 +39,11 @@ const IMG_FILES = [ // always .png
     "cursor/go-left-down",
     "cursor/go-right-down",
     "cursor/inspect",
+    "textbox/textbox",
+    "textbox/nametag",
+    "textbox/birbio/default",
+    "textbox/birbio/angy",
+    "textbox/birbio/hoppy",
 ]
 
 function preloadImg() {
@@ -47,4 +53,21 @@ function preloadImg() {
         _IMG[filename] = f;
     }
     return _IMG;
+}
+
+const FONT_FILEPATH = "/small-things/assets/fonts/";
+
+const FONT_FILES = [
+    "Barrio/Barrio-Regular",
+    "Indie_Flower/IndieFlower-Regular",
+    "Schoolbell/Schoolbell-Regular"
+]
+
+function preloadFonts() {
+    let _FONTS = {};
+    for (let filename of FONT_FILES) {
+        const f = loadFont(FONT_FILEPATH + filename + ".ttf");
+        _FONTS[filename] = f;
+    }
+    return _FONTS;
 }

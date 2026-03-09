@@ -1,6 +1,7 @@
 function preload() {
     [BGM, SFX] = preloadAudio();
     IMG = preloadImg();
+    FONTS = preloadFonts();
 }
 
 function setup() {
@@ -13,7 +14,7 @@ function draw() {
     resizeScreen()
     SCALE = CANVAS_SIZE.x / INITIAL_CANVAS_SIZE.x;
     scale(SCALE);
-    
+
     CURSOR = 'default'
     CURSOR_HOVER = null;
     noStroke();
@@ -48,5 +49,8 @@ function resizeScreen() {
 }
 
 function debugDraw() {
+    textFont('null');
+    textSize(22);
+    textAlign(LEFT);
     text(`Mouse POS: ${mouseX/SCALE} / ${mouseY/SCALE}`, 10, 20)
 }
