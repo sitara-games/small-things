@@ -52,5 +52,27 @@ function debugDraw() {
     textFont('null');
     textSize(22);
     textAlign(LEFT);
-    text(`Mouse POS: ${mouseX/SCALE} / ${mouseY/SCALE}`, 10, 20)
+    text(`Mouse POS: ${mouseX/SCALE} / ${mouseY/SCALE}`, 10, 20);
+}
+
+function makeSaveData() {
+    return JSON.stringify({
+        "SCREEN_ID": SCREEN.id,
+        "SETTINGS": SETTINGS,
+        "FLAGS": FLAGS, 
+    })
+}
+
+function saveGame() {
+    localStorage.setItem("saveData", makeSaveData());
+}
+
+function loadGame() {
+    const saveData = JSON.parse(localStorage.getItem("saveData"));
+    if (!saveData) return;
+    SETTINGS = saveData.SETTINGS;
+    FLAGS = saveData.FLAGS;
+    SCREEN = WORLD[saveData.SCREEN_ID];
+    OVERLAY = null;
+    updateScriptAndWorld();
 }

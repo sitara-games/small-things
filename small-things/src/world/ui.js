@@ -42,6 +42,10 @@ class Interactable {
             case "convo": 
                 runConvo(this.action_to)
                 break
+            case "save": 
+                saveGame()
+                runConvo("universal/save")
+                break;
         }
     }
 }
@@ -95,6 +99,11 @@ class Textbox {
         }
     }
     onclick() {
+        if (SCRIPT[this.convo][this.page].flags.length > 0) {
+            SCRIPT[this.convo][this.page].flags
+                .forEach((v) => FLAGS[v[0]] = v[1]);
+            updateScriptAndWorld();
+        }
         if (this.display_text_done) {
             this.page ++; 
             this.visible_characters = 0;

@@ -28,6 +28,7 @@ const IMG_FILEPATH = "/small-things/assets/img/";
 const IMG_FILES = [ // always .png
     "bg/castle",
     "bg/forest",
+    "bg/forest-house",
     "bg/mine",
     "bg/river",
     "bg/town",
@@ -39,6 +40,7 @@ const IMG_FILES = [ // always .png
     "cursor/go-left-down",
     "cursor/go-right-down",
     "cursor/inspect",
+    "cursor/save",
     "textbox/textbox",
     "textbox/nametag",
     "textbox/birbio/default",

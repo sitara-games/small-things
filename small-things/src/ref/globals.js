@@ -13,3 +13,6 @@ let DEBUG = true;
 let SETTINGS = {
     "TEXT_SPEED": 1
 }
+let FLAGS = { 
+    investigatedForest: false
+}

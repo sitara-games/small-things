@@ -7,10 +7,27 @@ function getWorld() {
             cursor: 'go-left', action: 'move', action_to: 'river'
         }),
         new Interactable('goTown', new V2(924, 526), new V2(1024, 670), {
-            cursor: 'go-right', action: 'move', action_to: 'town'
+            cursor: 'go-right', action: 'convo', action_to: 'goTownBeforeInvestigating'
+        }),
+        new Interactable('enterHouse', new V2(626, 581), new V2(660, 665), {
+            cursor: 'enter', action: 'move', action_to: 'forestHouse'
+        }),
+        new Interactable('inspectFruit', new V2(355, 239), new V2(437, 332), {
+            cursor: 'inspect', action: 'convo', action_to: 'inspectFruit'
         }),
     ]
     _WORLD["forest"] = screenForest;
+
+    const screenForestHouse = new WorldScreen("forestHouse", "bg/forest-house");
+    screenForestHouse.interactables = [
+        new Interactable('exitForest', new V2(722, 90), new V2(908, 333), {
+            cursor: 'exit', action: 'move', action_to: 'forest'
+        }),
+        new Interactable('inspectNotebook', new V2(121, 447), new V2(177, 527), {
+            cursor: 'save', action: 'save'
+        }),
+    ]
+    _WORLD["forestHouse"] = screenForestHouse;
 
     const screenRiver = new WorldScreen("river", "bg/river");
     screenRiver.interactables = [
